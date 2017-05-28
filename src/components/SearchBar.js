@@ -5,12 +5,11 @@ const SearchBar = (props) => {
     <div>
       <input
         type='search'
+        placeholder='Search (e.g. "Fight Club")'
+        className="search-bar"
         value={props.query}
         onChange={props.handleInputChange}
       />
-      <button>
-        <span className="glyphicon glyphicon-search"></span>
-      </button>
     </div>
   );
 };
