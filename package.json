@@ -1,0 +1,19 @@
+{
+  "name": "movie-search-bar-tmdb",
+  "version": "1.0.0",
+  "description": "A simple search bar to browse movies using TMDB's API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astelvida/movie-search-bar-tmdb.git"
+  },
+  "author": "Sevda Anefi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astelvida/movie-search-bar-tmdb/issues"
+  },
+  "homepage": "https://github.com/astelvida/movie-search-bar-tmdb#readme"
+}
