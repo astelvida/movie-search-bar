@@ -29,7 +29,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.movies.length)
     return (
       <div className="app">
         <h1>Search Movie</h1>
