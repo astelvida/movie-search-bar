@@ -10,6 +10,9 @@ const SearchBar = (props) => {
           onChange={props.handleInputChange}
         />
       </form>
+      <button className="btn hidden-sm-down">
+        <span className="glyphicon glyphicon-search"></span>
+      </button>
     </div>
   );
 };

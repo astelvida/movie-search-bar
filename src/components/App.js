@@ -41,7 +41,7 @@ export default class App extends React.Component {
           handleInputChange={(e) => this.handleInputChange(e)}
           query={this.state.query}
         />
-      <MovieList movies={this.state.movies}/>
+        <MovieList movies={this.state.movies}/>
       </div>
     );
   }
