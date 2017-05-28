@@ -15,7 +15,7 @@ const MovieItem = (props) => {
       </div>
       <div style={content}>
         <div style={movieTitle}>{title}</div>
-        <div style={releaseDate}>{release_date}</div>
+        <div style={releaseDate}>{release_date.slice(0,4)}</div>
       </div>
     </div>
   );
@@ -24,16 +24,21 @@ const MovieItem = (props) => {
 const style={
   movieContainer: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderBottom: 'solid #d3d3d3 1px',
+    padding: '10px',
+    width: '25%'
   },
   content: {
-    flex: 2,
+    flex: 1,
+    paddingLeft: '10px',
+    paddingRight: '10px',
   },
   movieTitle: {
     fontWeight: '500'
   },
   releaseDate: {
-    color: 'white'
+    color: 'black'
   },
   image: {
     width: '100%'
