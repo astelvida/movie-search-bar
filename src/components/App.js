@@ -15,13 +15,21 @@ export default class App extends React.Component {
 
   handleInputChange(e) {
     e.preventDefault();
-    const q = e.target.value;
+    const q = e.target.value.toLowerCase();
     this.setState({ query: q });
     q === ''? this.setState({ movies: [] }):
       axios.get(`${URL}${API_KEY}&language=en-US&query=${q}&page=1`)
       .then((resp) => {
         // only update state if response indicates the most recent query
         if (this.state.query === q) {
+          resp.data.results.sort((movie1, movie2) => {
+            const movie1Index =  movie1.title.toLowerCase().indexOf(q);
+            const movie2Index =  movie2.title.toLowerCase().indexOf(q);
+            if (movie1Index === -1 && movie2Index === -1) return 0;
+            if (movie1Index === -1) return 1;
+            if (movie2Index === -1) return -1;
+            return movie1Index < movie2Index? -1: movie1Index > movie2Index? 1: 0;
+          })
           this.setState({ movies: resp.data.results });
         }
       })
