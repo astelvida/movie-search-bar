@@ -16,24 +16,14 @@ export default class App extends React.Component {
   handleInputChange(e) {
     e.preventDefault();
     const q = e.target.value;
-    console.log('Q', q);
     this.setState({ query: q });
-    if (q === '') {
-      this.setState({ movies: [] });
-    } else {
+    q === ''? this.setState({ movies: [] }):
       axios.get(`${URL}${API_KEY}&language=en-US&query=${q}&page=1`)
-      .then((resp) => {
-        console.log("RESP", resp.data.results)
-        this.setState({ movies: resp.data.results });
-      })
-      .catch((err) => {
-        console.log('err', err)
-      });
-    }
+      .then((resp) => this.setState({ movies: resp.data.results }))
+      .catch((err) => this.setState({ movies: [] }));
   }
 
   render() {
-
     return (
       <div>
         <h1>Search Movie</h1>

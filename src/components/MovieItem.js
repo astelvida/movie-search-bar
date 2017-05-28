@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 class MovieItem extends React.Component {
   constructor() {
@@ -18,17 +20,18 @@ class MovieItem extends React.Component {
   }
 
   render() {
-    const { overview, title, poster_path, release_date } = this.props.movie;
-    const { movieContainer, movieTitle, releaseDate, image, content, imageErr } = style;
+    const { overview, title, poster_path, release_date, vote_average } = this.props.movie;
+    const { container, titleStyle, other, image, imageErr, content, description } = style;
 
     const handleImage= (poster) =>
-    poster? <img style={image} src={`https://image.tmdb.org/t/p/w45/${poster_path}`} alt=''/>:
+    poster? <img
+      style={image} src={`https://image.tmdb.org/t/p/w45/${poster_path}`} alt=''/>:
     <img style={imageErr} src={`http://pngimages.net/sites/default/files/movie-png-image-45074.png`} alt=''/>
 
     return (
       <div
         className="movie-item"
-        style={movieContainer}
+        style={container}
         onMouseOver={(e) => this.handleMouseOver(e)}
         onMouseLeave={(e) => this.handleMouseLeave(e)}
       >
@@ -36,9 +39,10 @@ class MovieItem extends React.Component {
           {handleImage(poster_path)}
         </div>
         <div style={content}>
-          <div style={movieTitle}>{title}</div>
-          <div style={releaseDate}>{release_date.slice(0,4)}</div>
-          <div> {this.state.hovered? overview: ''}</div>
+          <div style={titleStyle}>{title}</div>
+          <div style={other}>{release_date.slice(0,4)}</div>
+          <div style={other}>Rating: {vote_average}</div>
+          <div style={description}> {this.state.hovered? overview: ''}</div>
         </div>
       </div>
     );
@@ -46,29 +50,33 @@ class MovieItem extends React.Component {
 }
 
 const style={
-  movieContainer: {
+  container: {
     display: 'flex',
     flexDirection: 'row',
     borderBottom: 'solid #d3d3d3 1px',
     padding: '10px',
-    width: '40%'
+    width: '480px'
   },
   content: {
     flex: 1,
     paddingLeft: '10px',
     paddingRight: '10px',
   },
-  movieTitle: {
-    fontWeight: '500'
-  },
-  releaseDate: {
-    color: 'black'
+  titleStyle: {
+    fontWeight: '700'
   },
   image: {
     width: '100%'
   },
   imageErr: {
     width: 45
+  },
+  other: {
+    paddingTop: '5px'
+  },
+  description: {
+    paddingTop: '10px',
+    fontSize: '12px',
   }
 }
 
