@@ -27,7 +27,7 @@ const style={
     flexDirection: 'row',
     borderBottom: 'solid #d3d3d3 1px',
     padding: '10px',
-    width: '25%'
+    width: '40%'
   },
   content: {
     flex: 1,
