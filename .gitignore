@@ -1,2 +1,5 @@
 # node_modules
 node_modules/
+
+# API_keys
+config.js
