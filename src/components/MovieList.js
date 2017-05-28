@@ -6,7 +6,7 @@ import { MovieItem } from './MovieItem';
 const MovieList = (props) => {
   console.log('movies props', props)
   return (
-    <div>
+    <div className="movie-list">
       <ReactCSSTransitionGroup
         transitionName="movies"
         transitionEnterTimeout={100}
