@@ -18,14 +18,18 @@ export default class App extends React.Component {
     const q = e.target.value;
     console.log('Q', q);
     this.setState({ query: q });
-    axios.get(`${URL}${API_KEY}&language=en-US&query=${q}&page=1`)
-    .then((resp) => {
-      console.log("RESP", resp.data.results)
-      this.setState({ movies: resp.data.results });
-    })
-    .catch((err) => {
-      console.log('err', err)
-    })
+    if (q === '') {
+      this.setState({ movies: [] });
+    } else {
+      axios.get(`${URL}${API_KEY}&language=en-US&query=${q}&page=1`)
+      .then((resp) => {
+        console.log("RESP", resp.data.results)
+        this.setState({ movies: resp.data.results });
+      })
+      .catch((err) => {
+        console.log('err', err)
+      });
+    }
   }
 
   render() {
@@ -35,7 +39,7 @@ export default class App extends React.Component {
         <h1>Search Movie</h1>
         <SearchBar
           handleInputChange={(e) => this.handleInputChange(e)}
-          query={this.state.query}d
+          query={this.state.query}
         />
       <MovieList movies={this.state.movies}/>
       </div>

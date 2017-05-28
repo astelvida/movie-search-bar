@@ -1,3 +1,9 @@
 body {
-  background: white;
+  background: #f1f1f1;
+  font-family: 'Helvetica Neue'
+}
+
+.search-bar {
+  border-radius: 1px;
+  background: #fff;
 }
