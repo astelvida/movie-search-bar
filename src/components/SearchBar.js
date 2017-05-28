@@ -8,7 +8,7 @@ const SearchBar = (props) => {
         value={props.query}
         onChange={props.handleInputChange}
       />
-      <button className="btn">
+      <button>
         <span className="glyphicon glyphicon-search"></span>
       </button>
     </div>

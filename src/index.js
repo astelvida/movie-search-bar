@@ -1,5 +1,4 @@
 const style = require('./style.css')
-console.log("testing webpack...")
 
 import React from 'react';
 import ReactDOM from 'react-dom';

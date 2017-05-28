@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
 
 class MovieItem extends React.Component {
   constructor() {
@@ -41,7 +39,7 @@ class MovieItem extends React.Component {
         <div style={content}>
           <div style={titleStyle}>{title}</div>
           <div style={other}>{release_date.slice(0,4)}</div>
-          <div style={other}>Rating: {vote_average}</div>
+          <div style={other}>Rating: {vote_average? vote_average: 'N/A'}</div>
           <div style={description}> {this.state.hovered? overview: ''}</div>
         </div>
       </div>
