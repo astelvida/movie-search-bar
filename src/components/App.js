@@ -19,11 +19,17 @@ export default class App extends React.Component {
     this.setState({ query: q });
     q === ''? this.setState({ movies: [] }):
       axios.get(`${URL}${API_KEY}&language=en-US&query=${q}&page=1`)
-      .then((resp) => this.setState({ movies: resp.data.results }))
+      .then((resp) => {
+        // only update state if response indicates the most recent query
+        if (this.state.query === q) {
+          this.setState({ movies: resp.data.results });
+        }
+      })
       .catch((err) => this.setState({ movies: [] }));
   }
 
   render() {
+    console.log(this.state.movies.length)
     return (
       <div className="app">
         <h1>Search Movie</h1>
