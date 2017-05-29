@@ -22,6 +22,8 @@ export default class App extends React.Component {
       .then((resp) => {
         // only update state if response indicates the most recent query
         if (this.state.query === q) {
+          // sort by index of match, movies that start with query string
+          // would generally be a better match
           resp.data.results.sort((movie1, movie2) => {
             const movie1Index =  movie1.title.toLowerCase().indexOf(q);
             const movie2Index =  movie2.title.toLowerCase().indexOf(q);
@@ -29,7 +31,7 @@ export default class App extends React.Component {
             if (movie1Index === -1) return 1;
             if (movie2Index === -1) return -1;
             return movie1Index < movie2Index? -1: movie1Index > movie2Index? 1: 0;
-          })
+          });
           this.setState({ movies: resp.data.results });
         }
       })
